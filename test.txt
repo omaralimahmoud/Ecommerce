@@ -1,0 +1,19 @@
+cats(id,name,created_at)
+prodects(id,name ,pieces_no,price,desc,img, created_at cat_id)
+orders(id,name,email,phone,address,status,created_at)
+order_detailes (id,order_id,prodect_id,qty)
+------------------------------------------------------------
+admins(id,name ,email,password,is_super,created_at)
+request
+seesion
+css
+css
+css
+css
+css
+index
+cart
+category
+product
+PRODUCT
+search
