@@ -5,7 +5,7 @@
 <?php
 use  TechStore\classes\MODELS\prodect; 
   $pr =new prodect;
-  $prodss= $pr->select("id,name,price,img");
+  $prodss= $pr->select("products.id,products.name,price,img");
   ?>
 
 

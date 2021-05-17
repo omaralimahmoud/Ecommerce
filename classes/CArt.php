@@ -52,7 +52,14 @@ class CArt
        }
      }
      
+     public function empty()
      
+     {
+       if (isset($_SESSION['cart'])) {
+        $_SESSION['cart'] =[];
+       }
+         
+     }
      
    
 }

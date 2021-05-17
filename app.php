@@ -2,6 +2,9 @@
 //$path=__DIR__ . "/";
 define("PATH",__DIR__ . "/");
 define("URL","http://localhost/lapmoppc1/");
+define("APATH",__DIR__ . "/admin/");
+define("AURL","http://localhost/lapmoppc1/admin/");
+
 define("DSERVERNAME","localhost");
 define("DB_USERNAME","root");
 define("DB_PASSWORD","");

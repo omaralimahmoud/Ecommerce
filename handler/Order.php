@@ -7,8 +7,8 @@ use  TechStore\classes\MODELS\orders;
 
 $orders= new orders;
 $OrderDetailss= new OrderDetails;
-$cart=new CArt;
-if ($reqest->postHas('submit')) {
+$cart =new CArt;
+if ($reqest->postHas('submit') and $cart->countt() !== 0) {
     $name= $reqest->post('name');
     $email=  $reqest->post('email');
     $phone= $reqest->post('phone');
@@ -17,12 +17,18 @@ if ($reqest->postHas('submit')) {
     $validitor->validate('name',$name, ['required','Str','Max']);
      if (!empty($email)) {
         $validitor->validate('email',$email, ['email','Max']);
+        $email="'$email'";
+     }else {
+        $email= "NULL";
      }
    
      $validitor->validate('phone',$phone, ['required','Str','Max']);
 
     if (!empty($address) ) {
         $validitor->validate('address',$address, ['Str','Max']);
+        $address="'$address'";
+    }else {
+        $address="NULL";
     }
      
     if ($validitor->hasErrors()) {
@@ -31,11 +37,12 @@ if ($reqest->postHas('submit')) {
         
 
     }else {
-     $orderId=   $orders->insertAndGetId("name,email,address,phone","'$name','$email','$address','$phone'");
+     $orderId=   $orders->insertAndGetId("name,email,address,phone","'$name',$email,$address,'$phone'");
        foreach ($cart->all() as $prodId => $prodData) {
            $qty= $prodData['qty'];
           $OrderDetailss->insert("order_id,product_id,qty","'$orderId','$prodId','$qty'");
        }
+       $cart->empty();
       $reqest->rdirect("products.php");
     }
   
@@ -43,4 +50,6 @@ if ($reqest->postHas('submit')) {
   
    // $reqest->rdirect("products.php");
     
+}else{
+    $reqest->rdirect("products.php");
 }

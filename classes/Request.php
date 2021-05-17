@@ -16,7 +16,10 @@ class Request
        return   trim( htmlspecialchars($_POST[$key]));
     }              
      
-     
+     public function files(string $key)
+     {
+         return $_FILES[$key];
+     }
 
 
 
@@ -41,5 +44,9 @@ class Request
     public function rdirect($path)
     {
         header("location:" . URL . $path);
+    }
+    public function Ardirect($path)
+    {
+        header("location:" . AURL . $path);
     }
 }

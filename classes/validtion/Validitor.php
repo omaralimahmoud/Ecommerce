@@ -2,7 +2,7 @@
 namespace TechStore\classes\validtion;
 class Validitor 
 {
-    private $errors;
+    protected $errors =[];
     public function validate( string $name, $value, array $rules)
     {
         foreach ( $rules  as $rule) {
@@ -22,13 +22,15 @@ class Validitor
     }
 
 
-    public function getErrors() : array
+    public function getErrors() :array
     {
         return $this->errors;
     }
-   public function hasErrors( ) : bool
+   public function hasErrors() : bool
    {
-      return ! empty($this-> errors);
+      return  !empty($this-> errors);
+           
+       
    }
 
 
